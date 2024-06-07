@@ -1,0 +1,138 @@
+\usepackage{environ}
+
+\setCJKsansfont[BoldFont=HaranoAjiGothic-Bold.otf]{HaranoAjiGothic-Medium.otf}
+\setCJKmonofont[BoldFont=HaranoAjiGothic-Bold.otf]{HaranoAjiGothic-Medium.otf}
+\usepackage[olddefault, newcmbb, varnothing]{fontsetup}
+\DeclareMathAlphabet{\cl}{OMS}{cmsy}{m}{n} % 旧チャンセリー筆記体
+\setsansfont{nimbussans}
+
+
+\allowdisplaybreaks[4]
+\setpagelayout+{top=10truemm, bottom=10truemm, left=17truemm, right=17truemm}
+
+
+\setcounter{tocdepth}{4}
+
+
+\usepackage{xcolor}
+\definecolor{myred}{HTML}{ad0d00}
+\definecolor{myexccolor}{HTML}{f4f4ed}
+\definecolor{myurlcolor}{HTML}{ad0d00}
+\definecolor{mylinkcolor}{HTML}{2a4f99}
+\newcommand{\rx}[1]{\mathcolor{myred}{#1}}
+\newcommand{\colorbtx}[3]{\colorbox{#1}{\textcolor{#2}{#3}}}
+
+
+\usepackage[explicit]{titlesec}
+\titleformat{\chapter}{\huge\gsb\filleft}{}{0em}{\parbox[b]{\dimexpr\linewidth-2.5cm\relax}{#1}\hfill\parbox[b]{2cm}{\hfill{\fontsize{80}{96}\selectfont\thechapter}}}
+\titleformat{name=\chapter,numberless}{\huge\gsb}{}{0em}{#1}
+\titlespacing*{\chapter}{0pt}{50pt}{40pt}
+\titleformat{\section}{\Large}{\gsb\thesection}{1em}{\gs #1}
+\titleformat{name=\section,numberless}{\Large\gs}{}{0em}{#1}
+
+
+\usepackage{hyperref}
+\hypersetup{setpagesize=false, bookmarksdepth=4, bookmarksnumbered=true, colorlinks=true, linkcolor=mylinkcolor, citecolor=mylinkcolor, urlcolor=myurlcolor, pdfauthor={鴎海}}
+
+
+\usepackage[inline]{enumitem}
+\newlist{myenumx}{enumerate}{1}
+\setlist[myenumx]{label=(\roman*), ref=(\roman*)}
+\NewDocumentEnvironment{myenum}{O{}}{\ifstrequal{#1}{n}{\begin{myenumx}[leftmargin=*]}{\begin{myenumx}}}{\end{myenumx}}
+\newlist{myenum*}{enumerate*}{1}
+\setlist[myenum*]{label=(\roman*), ref=(\roman*)}
+
+\newlist{thmlistx}{enumerate}{2}
+\setlist[thmlistx, 1]{label=(\roman{thmlistxi}), noitemsep}
+\setlist[thmlistx, 2]{label=(\roman{thmlistxi}.\roman{thmlistxii}), noitemsep}
+\makeatletter
+\renewcommand{\p@thmlistxi}{\perh@ps{\thetcbcounter}}
+\protected\def\perh@ps#1{#1}
+\newcommand{\itemref}[1]{%
+  \begingroup
+  \let\perh@ps\@gobble\ref{#1}%
+  \endgroup
+}
+\makeatother
+\NewDocumentEnvironment{thmlist}{O{}}{\ifstrequal{#1}{n}{\begin{thmlistx}[leftmargin=*]}{\begin{thmlistx}}}{\end{thmlistx}}
+
+\newlist{step}{enumerate}{3}
+\setlist[step, 1]{label=(\arabic{stepi}), noitemsep}
+\setlist[step, 2]{label=(\arabic{stepi}.\arabic{stepii}), noitemsep}
+\setlist[step, 3]{label=(\arabic{stepi}.\arabic{stepii}.\arabic{stepiii}), noitemsep}
+
+
+\usepackage[nameinlink]{cleveref}
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\newtcolorbox{excfieldx}{%
+  enhanced,
+  tile,
+  colback=myexccolor,
+  fontupper=\gs,
+  size=title,%
+}
+\NewDocumentEnvironment{excfield}{m}{%
+  \phantomsection
+  \addcontentsline{toc}{subsection}{#1}
+  \begin{excfieldx}
+    #1
+  \end{excfieldx}%
+}{}
+\NewTColorBox{myfrmx}{O{}}{%
+  enhanced,
+  breakable,
+  colframe=black, colback=white, coltitle=black, colbacktitle=white,
+  borderline={.7pt}{0pt}{dashed},
+  frame hidden,
+  #1
+}
+\NewDocumentEnvironment{myfrm}{O{}}{\ifstrempty{#1}{\begin{myfrmx}}{\begin{myfrmx}[attach boxed title to top text left={yshift*=-\tcboxedtitleheight/2}, boxed title style={tile}, title={\gs #1}]}}{\end{myfrmx}}
+\tcbsetforeverylayer{myitm/.style={%
+  enhanced,
+  breakable,
+  colframe=black, colback=white, coltitle=black, colbacktitle=white,
+  fonttitle=\gs,
+  boxrule=.7pt,
+  sharp corners,
+  attach boxed title to top text left={yshift*=-\tcboxedtitleheight/2},
+  boxed title style={tile},%
+}}
+\NewTColorBox[auto counter]{none}{}{}
+\newcommand{\defitem}[2]{%
+  \crefname{thmlistx#1}{#2}{#2}
+  \NewTColorBox[use counter from=none, crefname={#2}{#2}]{#1}{O{}O{}O{}}{%
+    myitm,
+    title={#2\thetcbcounter\ifstrempty{##1}{}{（##1）}},
+    label={\ifstrempty{##2}{item_\thetcbcounter}{##2}},
+    nameref={\ifstrempty{##3}{##1}{##3}},
+    before upper={\crefalias{thmlistxi}{thmlistx#1}},%
+  }%
+}
+\defitem{thm}{定理}
+\defitem{dfn}{定義}
+\defitem{lem}{補題}
+\defitem{prp}{命題}
+
+
+\usepackage{longtable}
+\usepackage{hhline}
+\newenvironment{typos}{%
+  \begin{longtable}[l]{|l|p{.35\linewidth}|p{.35\linewidth}|}
+    \hhline{|===|}
+    {\gs 修正箇所} & {\gs 誤} & {\gs 正} \\
+    \hline
+    \endfirsthead
+    \hline
+    \endhead
+    \hline
+    \endfoot
+    \hhline{|===|}
+    \endlastfoot%
+}{\end{longtable}}
+
+
+\everymath{\displaystyle}
+\newcommand{\noprint}[1]{}
