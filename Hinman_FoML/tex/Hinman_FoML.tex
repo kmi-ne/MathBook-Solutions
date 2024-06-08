@@ -1,0 +1,53 @@
+\documentclass[xelatex, autodetect-engine, dvi=dvipdfmx, ja=standard, base=9pt, b5j, label-section=none, notitlepage, prefercjk]{bxjsreport}
+
+\usepackage{../../mysettings}
+
+\input{cmd/general.tex}
+\input{cmd/1.tex}
+
+
+\title{\gs Hinman, \emph{Fundamentals of Mathematical Logic} \\ 解答}
+\author{鴎海}
+\date{\small （最終更新日: \today）}
+
+% 
+% 
+% 
+% 
+
+\begin{document}
+
+\maketitle
+
+\pagenumbering{roman}
+
+本稿では，以下の書籍の演習問題の解答を与えます．
+
+\begin{center}
+  Hinman, P. G. (2005). \emph{Fundamentals of Mathematical Logic}. A K Peters.
+\end{center}
+
+その他，同書で証明が省略されていたり，注意が必要と思われるような箇所についても，補足的に掲載します．また，正誤表も本稿の末尾に掲載します．
+
+本稿のpdfファイルおよび\TeX ソースファイルの最新版は，\href{https://github.com/kmi-ne/MathBook-Solutions/tree/main/Hinman_FoML}{GitHubの該当リポジトリ}から入手できます．
+
+\tableofcontents
+
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% 
+% 
+% 
+% 
+
+\renewcommand{\prechaptername}{}
+\renewcommand{\postchaptername}{}
+
+\input{1/1.tex}
+
+\input{typos.tex}
+
+\end{document}

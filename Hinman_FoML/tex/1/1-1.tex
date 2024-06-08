@@ -1,0 +1,96 @@
+\begin{excfield}{注意: 命題1.1.5の補題(4)の証明}
+  補題(4)の証明は，$\phi_0 \dots \phi_k$の長さに関する帰納法に基づいていますが，帰納法のbasisである，長さが$1$の場合に(4)が正しいことの証明が省略されています．これは次のように証明できます．$\phi_0 \dots \phi_k$と$\psi_0 \dots \psi_l$の長さに関して$1 > k, l$であるため，$k = l = 0$でしかありえず，したがって$\phi_0 = \psi_0$となります．
+\end{excfield}
+
+
+
+\begin{excfield}{演習1.1.10}
+  以下のように定義する．
+  \begin{dfn}[中置記法での$L$--命題論理式の集合]
+    \begin{thmlist}[n]
+      \item $\Sent_0 \dfeq \text{$L$--原子命題論理式の集合}$
+      \item 任意の$n \in \omega$に対して，
+      \begin{eqalign}
+        \Sent_{n + 1} \dfeq{} & \Sent_n \cup \{(\lnot \phi) : \phi \in \Sent_n\} \\
+        & {}\cup \{(\phi \bullet \psi) : \phi, \psi \in \Sent_n, \text{$\bullet$は$\lor, \land, \ra, \lra$のいずれか}\}
+      \end{eqalign}
+      \item $\Sent_L \dfeq \bigcup_{n \in \omega} \Sent_n$
+    \end{thmlist}
+  \end{dfn}
+
+  次は補題1.1.3および命題1.1.4と全く同じ方法で証明できる．
+  \begin{prp}[$L$--命題論理式の帰納法による証明][i_1_10_ind][$L$--命題論理式の帰納法]
+    $L$--表現に関する任意の性質$\cl P$に対して，
+    \begin{myenum}
+      \item 任意の$L$--原子命題論理式について$\cl P$が成り立ち，かつ
+      \item 任意の$L$--命題論理式$\phi, \psi$に対し，$\phi, \psi$について$\cl P$が成り立つならば，$(\lnot \phi)$，$(\phi \lor \psi)$，$(\phi \land \psi)$，$(\phi \ra \psi)$，$(\phi \lra \psi)$についても$\cl P$が成り立つ
+    \end{myenum}
+    ならば，任意の$L$--命題論理式に対して$\cl P$が成り立つ．
+  \end{prp}
+
+  次を証明する．
+  \begin{prp}[一意可読性][i_1_10_ur]
+    任意の$L$--命題論理式$\theta$に対して，以下のちょうど1つが成り立つ．
+    \begin{myenum}
+      \item \label{i_1_10_ur_1}
+      $\theta$は$L$--原子命題論理式である．
+      \item \label{i_1_10_ur_2}
+      $\theta = (\lnot \phi)$なる$L$--命題論理式$\phi$が存在する．
+      \item \label{i_1_10_ur_3}
+      $\theta = (\phi \lor \psi)$なる$L$--命題論理式$\phi, \psi$がそれぞれ一意に存在する．
+      \item \label{i_1_10_ur_4}
+      $\theta = (\phi \land \psi)$なる$L$--命題論理式$\phi, \psi$がそれぞれ一意に存在する．
+      \item \label{i_1_10_ur_5}
+      $\theta = (\phi \ra \psi)$なる$L$--命題論理式$\phi, \psi$がそれぞれ一意に存在する．
+      \item \label{i_1_10_ur_6}
+      $\theta = (\phi \lra \psi)$なる$L$--命題論理式$\phi, \psi$がそれぞれ一意に存在する．
+    \end{myenum}
+  \end{prp}
+
+  そのために次を証明する．以下，$\bullet$は$\lor, \land, \ra, \lra$のいずれかとする．
+  \begin{lem}
+    \begin{thmlist}[n]
+      \item \label{i_1_10_lem_preq}
+      $L$--命題論理式に含まれる$($の個数と$)$の個数は同じである．
+      \item \label{i_1_10_lem_prg}
+      $L$--命題論理式の真の始切片\footnote{演習1.1.11参照．}に含まれる$($の個数は$)$の個数より多い．
+      \item \label{i_1_10_lem_iniseg}
+      $L$--命題論理式の真の始切片は$L$--命題論理式ではない．
+      \item \label{i_1_10_lem_conn}
+      $\bullet'$は$\lor, \land , \ra, \lra$のいずれかとし，$\phi, \psi, \phi', \psi'$は$L$--命題論理式とする．$(\phi \bullet \psi) = (\phi' \mathbin{\bullet'} \psi')$ならば，$\phi = \phi'$，$\bullet = \bullet'$，$\psi = \psi'$である．
+    \end{thmlist}
+
+    \tcblower
+
+    \begin{myenum}[n]
+      \item $\phi$に対してこれが成り立つことを$\cl P (\phi)$と書く．任意の$L$--命題論理式$\phi$に対して$\cl P (\phi)$を\nameref{i_1_10_ind}で示す．
+      \begin{step}
+        \item $\phi$が$L$--原始命題論理式の場合，$($と$)$は含まれないので，$\cl P (\phi)$である．
+        \item $L$--命題論理式$\phi, \psi$を任意に取り，$\cl P (\phi)$と$\cl P (\psi)$を仮定する．仮定より，$\cl P ((\lnot \phi))$，$\cl P (\phi \bullet \psi)$であることは明らかである．
+      \end{step}
+      \item $\phi$に対してこれが成り立つことを$\cl P (\phi)$と書く．任意の$L$--命題論理式$\phi$に対して$\cl P (\phi)$を\nameref{i_1_10_ind}で示す．
+      \begin{step}
+        \item $\phi$が$L$--原始命題論理式の場合，真の始切片が存在しないので，$\cl P (\phi)$である．
+        \item $L$--命題論理式$\phi, \psi$を任意に取り，$\cl P (\phi)$と$\cl P (\psi)$を仮定する．$(\lnot \phi)$，$(\phi \bullet \psi)$のいずれについても，その真の始切片は右端の$\noprint{(})$を持たず，従って(i)より，そこに含まれる$($の個数は$)$の個数より多い．つまり，$\cl P ((\lnot \phi))$，$\cl P ((\phi \bullet \psi))$である．
+      \end{step}
+      \item \itemref{i_1_10_lem_preq}と\itemref{i_1_10_lem_prg}から従う．
+      \item $(\phi \bullet \psi) = (\phi' \mathbin{\bullet'} \psi')$であれば，$\noprint{(}\phi \bullet \psi) = \noprint{(}\phi' \mathbin{\bullet'} \psi')$であり，\itemref{i_1_10_lem_iniseg}より，$\phi$と$\phi'$の一方は他方の真の始切片になりえないので，$\phi = \phi'$である．よって，$\bullet = \bullet'$，次いで$\psi = \psi'$が従う．
+    \end{myenum}
+  \end{lem}
+
+  \cref{i_1_10_ur}を証明する．
+
+  (i)--(vi)のちょうど1つが$\theta$について成り立つことを$\cl P (\theta)$と書く．任意の$L$--命題論理式$\theta$に対して$\cl P (\theta)$を\nameref{i_1_10_ind}で示す．
+  \begin{step}
+    \item \label{i_1_10_prf_atm}
+    $\theta$が$L$--原始命題論理式の場合，(i)のみが成り立つので，$\cl P (\theta)$である．
+  \end{step}
+  $L$--命題論理式$\theta, \theta'$を任意に取り，$\cl P (\theta)$と$\cl P (\theta')$を仮定する．
+  \begin{step}[resume]
+    \item \label{i_1_10_prf_lnot}
+    $(\lnot \theta) = (\lnot \phi)$なる$L$--命題論理式$\phi$は一意に存在するので，(ii)が成り立ち，また左端から2番目の記号が$\lnot$であるのは(ii)の場合だけである．よって$\cl P ((\lnot \theta))$である．
+    \item \label{i_1_10_prf_lor}
+    $(\theta \lor \theta') = (\phi \lor \psi)$なる$L$--命題論理式$\phi, \psi$の存在は明らかである（$\theta, \theta'$自身）．また，$(\theta \lor \theta')$について，\ref{i_1_10_prf_atm}，\ref{i_1_10_prf_lnot}と同様の理由で，(i)と(ii)は成り立たない．また\cref{i_1_10_lem_conn}より，(iii)--(vi)のうち(iii)のみが成り立つ．よって$\cl P ((\theta \lor \theta'))$である．
+    \item \ref{i_1_10_prf_lor}と同様に，$\cl P ((\theta \land \theta'))$，$\cl P ((\theta \ra \theta'))$，$\cl P ((\theta \lra \theta'))$である．
+  \end{step}
+\end{excfield}
