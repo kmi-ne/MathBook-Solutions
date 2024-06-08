@@ -1,3 +1,18 @@
+\section{The propositional language}
+
+\begin{myfrm}[訳語対応]
+  \begin{description}
+    \item[一意可読性] unique readability
+    \item[原子命題論理式] atomic sentence
+    \item[真の始切片] proper initial segment
+    \item[命題記号] sentence symbol
+    \item[命題論理式] sentence
+    \item[命題論理式の帰納法] sentence induction
+  \end{description}
+\end{myfrm}
+
+
+
 \begin{excfield}{注意: 命題1.1.5の補題(4)の証明}
   補題(4)の証明は，$\phi_0 \dots \phi_k$の長さに関する帰納法に基づいていますが，帰納法のbasisである，長さが$1$の場合に(4)が正しいことの証明が省略されています．これは次のように証明できます．$\phi_0 \dots \phi_k$と$\psi_0 \dots \psi_l$の長さに関して$1 > k, l$であるため，$k = l = 0$でしかありえず，したがって$\phi_0 = \psi_0$となります．
 \end{excfield}
@@ -93,4 +108,132 @@
     $(\theta \lor \theta') = (\phi \lor \psi)$なる$L$--命題論理式$\phi, \psi$の存在は明らかである（$\theta, \theta'$自身）．また，$(\theta \lor \theta')$について，\ref{i_1_10_prf_atm}，\ref{i_1_10_prf_lnot}と同様の理由で，(i)と(ii)は成り立たない．また\cref{i_1_10_lem_conn}より，(iii)--(vi)のうち(iii)のみが成り立つ．よって$\cl P ((\theta \lor \theta'))$である．
     \item \ref{i_1_10_prf_lor}と同様に，$\cl P ((\theta \land \theta'))$，$\cl P ((\theta \ra \theta'))$，$\cl P ((\theta \lra \theta'))$である．
   \end{step}
+\end{excfield}
+
+
+
+\begin{excfield}{演習1.1.11}
+  長さ$n$の任意の$L$--命題論理式$\phi$に対し，その真の始切片が$L$--命題論理式でないことを$\cl P (n)$と書く．任意の$n$に対して$\cl P (n)$を帰納法で示す．
+  \begin{step}
+    \item $n = 1$の場合，真の始切片が存在しないので，$\cl P (1)$である．
+  \end{step}
+  任意の$1 \le i \le n$に対して$\cl P (i)$を仮定し，長さ$n + 1$の$L$--命題論理式$\phi$を任意に取る（もしそのような$\phi$が存在しなければ，自明に$\cl P (n + 1)$である）．命題1.1.5の証明の(1)と(2)より，$\phi$について(i)--(vi)のちょうど1つが成り立つ．
+  \begin{step}[resume]
+    \item $\phi$が$L$--原始命題論理式の場合，真の始切片が存在しないので，$\cl P (n + 1)$である．
+    \item $\phi = \lnot \psi$の場合，その真の始切片は$\lnot$か$\lnot S$の形である（$S$は$\psi$の真の始切片）．前者は$L$--命題論理式ではない．後者は，帰納法の仮定より$S$は$L$--命題論理式ではないので，命題1.1.5(ii)が成り立たず，また左端の記号が異なるので，(ii)以外も成り立たない．よって，$\phi$の真の始切片は$L$--命題論理式ではないので，$\cl P (n + 1)$である．
+    \item \label{i_1_11_lor}
+    $\phi = \lorord \psi \psi'$の場合，その真の始切片は以下のいずれかの形であり，仮にそれが$L$--命題論理式であれば，命題1.1.5(iii)が成り立つはずである．
+    \begin{step}
+      \item $\lor$．これは$L$--命題論理式ではない．
+      \item $\lorord S$（$S$は$\psi$の真の始切片）．帰納法の仮定より，$S$は$L$--命題論理式ではないので，命題1.1.5(iii)は成り立たない．よって，これは$L$--命題論理式ではない．
+      \item $\lorord \psi$．帰納法の仮定より，$\psi$の真の始切片$\chi$は$L$--命題論理式ではない．したがって，$\lorord \psi = \lorord \chi \chi'$なる$L$--命題論理式$\chi, \chi'$は存在しないので，命題1.1.5(iii)は成り立たない．よって，これは$L$--命題論理式ではない．
+      \item $\lorord \psi S$（$S$は$\psi'$の真の始切片）．$L$--命題論理式$\chi$の長さが$n$未満であれば，帰納法の仮定より，$\psi$と$\chi$の一方が他方の真の始切片になることはない．したがって，$\lorord \psi S = \lorord \chi \chi'$なる$L$--命題論理式$\chi, \chi'$は存在しないので，命題1.1.5(iii)は成り立たない．よって，これは$L$--命題論理式ではない．
+    \end{step}
+    以上より，$\cl P (n + 1)$である．
+    \item $\phi = \bulletord \psi \psi'$（$\bullet = \landord, \raord, \lraord$）の場合も，\ref{i_1_11_lor}と同様にして$\cl P (n + 1)$を証明できる．
+  \end{step}
+  証明は以上である．
+
+  この結果が補題(4)の代わりになることは次のようにして分かる．$\bulletord \phi \psi = \bulletord \phi' \psi'$であるとする．$\phi$と$\phi'$の一方が他方の真の始切片になることはないので，$\phi = \phi'$であり，したがって$\psi = \psi'$である．
+\end{excfield}
+
+
+
+\begin{excfield}{演習1.1.12}
+  任意の$\phi \in \Sent_{n + 1} \sim \Sent_n$に対し，定義1.1.2と一意可読性より，以下のいずれかちょうど1つが成り立つ．
+  \begin{myenum}
+    \item $\phi = \lnot \psi$なる$\psi \in \Sent_n$が一意に存在する．
+    \item $\phi = \lorord \psi \psi'$なる$\psi, \psi' \in \Sent_n$がそれぞれ一意に存在する．
+    \item $\phi = \landord \psi \psi'$なる$\psi, \psi' \in \Sent_n$がそれぞれ一意に存在する．
+    \item $\phi = \raord \psi \psi'$なる$\psi, \psi' \in \Sent_n$がそれぞれ一意に存在する．
+    \item $\phi = \lraord \psi \psi'$なる$\psi, \psi' \in \Sent_n$がそれぞれ一意に存在する．
+  \end{myenum}
+
+  したがって，任意の$n \in \omega$に対し，関数$F_{n + 1} \colon \Sent_n \to Z$を以下のように再帰的に定義できる．
+  \begin{eqalign}
+    F_{n + 1} (\phi) & {}= F_n (\phi)  & & \text{if $\phi \in \Sent_n$} \\
+    F_{n + 1} (\lnot \phi) & {}= G_\lnot (F_n (\phi)) & & \text{if $\lnot \phi \in \Sent_{n + 1} \sim \Sent_n$} \\
+    F_{n + 1} (\bulletord \phi \psi) & {}= G_\bullet (F_n (\phi), F_n(\psi)) & & \text{if $\bulletord \phi \psi \in \Sent_{n + 1} \sim \Sent_n$}
+  \end{eqalign}
+  $i_\phi$を$\phi \in \Sent_n$なる最小の$n \in \omega$とし，関数$F \colon \Sent_L \to Z$を$F (\phi) = F_{i_\phi} (\phi)$によって定義すると，任意の$\phi \in \Sent_n$なる$n$，つまり$n \ge i_\phi$に対して，$F (\phi) = F_{i_\phi} (\phi) = F_{i_\phi + 1} (\phi) = \dots = F_n (\phi)$である．よって，
+  \begin{step}
+    \item $\phi \in \Sent_0$に対して$F (\phi) = F_0 (\phi)$であるから，$F$は$F_0$の拡張である．
+    \item 任意の$\phi \in \Sent_L$に対して，適当な$n \in \omega$が存在して，
+    \begin{eqgather}
+      F (\lnot \phi) = F_{n + 1} (\lnot \phi) = G_\lnot (F_n (\phi)) = G_\lnot (F (\phi)) \\
+      F (\bulletord \phi \psi) = F_{n + 1} (\bulletord \phi \psi) = G_\bullet (F_n (\phi), F_n(\psi)) = G_\bullet (F (\phi), F(\psi))
+    \end{eqgather}
+    となる．よって，
+    \begin{eqalign}
+      F (\lnot \phi) & {}= G_\lnot (F (\phi)) \\
+      F (\bulletord \phi \psi) & {}= G_\bullet (F (\phi), F (\psi))
+    \end{eqalign}
+    である．
+  \end{step}
+
+  $F$の一意性を示す．いま，関数$F' \colon \Sent_L \to Z$も$F_0$の拡張であり，かつ
+  \begin{eqalign}
+    F' (\lnot \phi) & {}= G_\lnot (F' (\phi)) \\
+    F' (\bulletord \phi \psi) & {}= G_\bullet (F' (\phi), F' (\psi))
+  \end{eqalign}
+  を満たすとする．任意の$\phi \in \Sent_L$に対して$F (\phi) = F' (\phi)$が成り立ち，したがって$F = F'$が成り立つことを，$L$--命題論理式の帰納法で示す．
+  \begin{step}
+    \item $\phi \in \Sent_0$の場合，$F (\phi) = F_0 (\phi) = F' (\phi)$である．
+  \end{step}
+  $\phi , \psi \in \Sent_L$を任意に取り，$F (\phi) = F' (\phi)$，$F (\psi) = F' (\psi)$を仮定する．
+  \begin{step}[resume]
+    \item 仮定より，
+    \[F (\lnot \phi) = G_\lnot (F (\phi)) = G_\lnot (F' (\phi)) = F' (\lnot \phi)\]
+    \item 仮定より，
+    \[F (\bulletord \phi \psi) = G_\bullet (F (\phi), F (\psi)) = G_\bullet (F' (\phi), F' (\psi)) = F' (\bulletord \phi \psi)\]
+  \end{step}
+  証明は以上である．
+
+  命題1.1.9において，$Z = \{\true, \false\}$，$F_0 = V_0$とし，関数$G_\lnot \colon \{\true, \false\} \to \{\true, \false\}$と$G_\bullet \colon \{\true, \false\} \times \{\true, \false\} \to \{\true, \false\}$を
+  \[
+    G_\lnot \colon
+    \begin{aligned}
+      \true & {}\mapsto \false \\
+      \false & {}\mapsto \true
+    \end{aligned} \quad
+    G_\lor \colon
+    \begin{aligned}
+      (\true, \true) & {}\mapsto \true \\
+      (\true, \false) & {}\mapsto \true \\
+      (\false, \true) & {}\mapsto \true \\
+      (\false, \false) & {}\mapsto \false
+    \end{aligned} \quad
+    G_\land \colon
+    \begin{aligned}
+      (\true, \true) & {}\mapsto \true \\
+      (\true, \false) & {}\mapsto \false \\
+      (\false, \true) & {}\mapsto \false \\
+      (\false, \false) & {}\mapsto \false
+    \end{aligned} \quad
+    G_\ra \colon
+    \begin{aligned}
+      (\true, \true) & {}\mapsto \true \\
+      (\true, \false) & {}\mapsto \false \\
+      (\false, \true) & {}\mapsto \true \\
+      (\false, \false) & {}\mapsto \true
+    \end{aligned} \quad
+    G_\lra \colon
+    \begin{aligned}
+      (\true, \true) & {}\mapsto \true \\
+      (\true, \false) & {}\mapsto \false \\
+      (\false, \true) & {}\mapsto \false \\
+      (\false, \false) & {}\mapsto \true
+    \end{aligned}
+  \]
+  と定めれば，定理1.1.7を得る．
+\end{excfield}
+
+
+
+\begin{excfield}{演習1.1.13}
+  \begin{myenum}[n]
+    \item $\lnot ((\lnot p_1) \lor p_2)$
+    \item 仮にこれが$L$--命題論理式であるとする．命題1.1.5より，$\landord p_1 p_2 \lnot p_3 = \landord \phi \psi$なる$L$--命題論理式$\phi, \psi$が一意に存在する．よって，$p_1$は$L$--命題論理式であるから，$p_2 \lnot p_3$は$L$--命題論理式である．しかし，$p_2 \lnot p_3$は命題1.1.5のいずれの場合も満たさないので，$L$--命題論理式ではない．矛盾．ゆえに$\landord p_1 p_2 \lnot p_3$は$L$--命題論理式ではない．
+    \item $(p_1 \land p_2) \ra (((\lnot p_3) \lor p_8) \lra p_3)$
+  \end{myenum}
 \end{excfield}
