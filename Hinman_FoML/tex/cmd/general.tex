@@ -1,0 +1,58 @@
+% テキスト書体コマンド
+\newcommand{\gs}{\sffamily}
+\newcommand{\gsb}{\gs\bfseries}
+\newcommand{\xrm}[1]{\textrm{#1}}
+\newcommand{\xit}[1]{\textit{#1}}
+\newcommand{\xsf}[1]{\textsf{#1}}
+\newcommand{\xtt}[1]{\texttt{#1}}
+\newcommand{\xbf}[1]{\textbf{#1}}
+% 数式書体コマンド
+\newcommand{\up}[1]{\symup{#1}} % 1文字セリフ・ローマン体
+\newcommand{\mup}[1]{\mathrm{#1}} % 複数文字セリフ・ローマン体
+\newcommand{\yit}[1]{\symit{#1}} % 1文字セリフ・イタリック体
+% \newcommand{}[1]{\mathit{#1}} % 複数文字セリフ・イタリック体
+\newcommand{\sfu}[1]{\symsfup{#1}} % サンセリフ・ローマン体
+\newcommand{\sfi}[1]{\symsfit{#1}} % サンセリフ・イタリック体
+\newcommand{\frk}[1]{\symfrak{#1}} % フラクトゥール
+\newcommand{\bb}[1]{\symbb{#1}} % 黒板太字
+\newcommand{\bbi}[1]{\symbbit{#1}} % 黒板太字イタリック体
+\newcommand{\ncl}[1]{\symcal{#1}} % 新チャンセリー筆記体
+\newcommand{\scr}[1]{\symscr{#1}} % 新チャンセリー筆記体・小文字，ラウンド筆記体
+% - - - - - - -
+\newcommand{\bup}[1]{\symbfup{#1}} % 太字セリフ・ローマン体
+\newcommand{\bit}[1]{\symbfit{#1}} % 太字セリフ・イタリック体
+\newcommand{\bsu}[1]{\symbfsfup{#1}} % 太字サンセリフ・ローマン体
+\newcommand{\bsi}[1]{\symbfsfit{#1}} % 太字サンセリフ・イタリック体
+\newcommand{\bfr}[1]{\symbffrak{#1}} % 太字フラクトゥール
+% \newcommand{\bcl}[1]{??} % 太字旧チャンセリー筆記体
+\newcommand{\bncl}[1]{\symbfcal{#1}} % 太字新チャンセリー筆記体
+\newcommand{\bsc}[1]{\symbfscr{#1}} % 太字新チャンセリー筆記体・小文字，太字ラウンド筆記体
+
+
+%%% 両側デリミタ
+\newcommand{\pr}[1]{\left\lparen#1\right\rparen} % (_)
+\newcommand{\sbr}[1]{\left\lbrack#1\right\rbrack} % [_]
+\newcommand{\cb}[1]{\left\lbrace#1\right\rbrace} % {_}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil} % ceil
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor} % floor
+\newcommand{\ab}[1]{\left\langle#1\right\rangle} % <_>
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert} % |_|
+\newcommand{\nrm}[1]{\left\lVert#1\right\rVert} % ||_||
+
+
+\NewEnviron{eqalign}{\[\begin{aligned}\BODY\end{aligned}\]}
+\NewEnviron{eqgather}{\[\begin{gathered}\BODY\end{gathered}\]}
+
+\newcommand{\opr}[1]{\operatorname{#1}}
+
+\newcommand{\dfeq}{\coloneq}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\La}{\Leftarrow}
+\newcommand{\Lra}{\Leftrightarrow}
+\newcommand{\Defn}{\mathrel{:\Lra}}
+\newcommand{\defn}{\mathrel{:\lra}}
+\newcommand{\fal}[1]{\forall {#1} \,}
+\newcommand{\ext}[1]{\exists {#1} \,}
+\newcommand{\uext}[1]{\exists ! {#1} \,}
+\newcommand{\sbc}{\subseteq}
+\newcommand{\sprc}{\supseteq}
