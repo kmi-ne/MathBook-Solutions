@@ -1,0 +1,82 @@
+\section{Induction and recursion}
+
+\begin{myfrm}[訳語対応]
+  \begin{description}
+    \item[$\cl X$-帰納法] $\cl X$-induction
+    \item[$\cl X$-導出] $\cl X$-derivation
+    \item[$\cl X$-閉である] $\cl X$-closed
+    \item[帰納的系] inductive system
+    \item[帰納的閉包] inductive closure
+  \end{description}
+\end{myfrm}
+
+
+
+\begin{excfield}{注意: 定義1.2.1}
+  pp. 25--26にも書かれていますが，このような$X_n$の再帰的定義は定理1.2.12によって正当化されます．
+
+  もし$\cl X = (X, X_0, \cl H)$が帰納的系であれば，$X_0 \in \wp (X)$が成り立ちます．そこで定理1.2.12において
+  \begin{eqgather}
+    Z = \wp (X) \\
+    z_0 = X_0 \\
+    G \colon \wp (X) \times \omega \ni (x, n) \mapsto x \cup \{H (x_0, \dots, x_{k_H - 1}) \in X : H \in \cl H,\ x_0, \dots, x_{k_H - 1} \in x\} \in \wp (X)
+  \end{eqgather}
+  とすれば，$F (0) = X_0$かつ任意の$n \in \omega$に対して
+  \[F (n + 1) = F (n) \cup \{H (x_0, \dots, x_{k_H - 1}) : H \in \cl H,\ x_0, \dots, x_{k_H - 1} \in F (n)\}\]
+  であるような関数$F \colon \omega \to \wp (X)$が一意に存在することが言えます．この唯一の$F$に対する$F (n)$が，$X_n$（正確には$\cl X_n$）と書かれているのです．
+\end{excfield}
+
+
+
+\begin{excfield}{系1.2.4}
+  \begin{myenum}[n]
+    \item $\clos X \sbc \bigcap \{Y \sbc X : \closed{Y}{\cl X}\}$
+    \item $\clos X \sprc \bigcap \{Y \sbc X : \closed{Y}{\cl X}\}$
+  \end{myenum}
+  を示す．
+
+  \begin{myenum}[n]
+    \item 命題1.2.3(ii)より，
+    \[\{Y \sbc X : \closed{Y}{\cl X}\} \sbc \{Y \sbc X : \clos X \sbc Y\}\]
+    よって，
+    \[
+      \clos X
+      = \bigcap \{Y \sbc X : \clos X \sbc Y\}
+      \sbc \bigcap\{Y \sbc X : \closed{Y}{\cl X}\}
+    \]
+    \item $\clos X \sbc X$および命題1.2.3(i)より，
+    \[\clos X \in \{Y \sbc X : \closed{Y}{\cl X}\}\]
+    よって，
+    \[\clos X \sprc \bigcap \{Y \sbc X : \closed{Y}{\cl X}\}\]
+  \end{myenum}
+\end{excfield}
+
+
+
+\begin{excfield}{命題1.2.7}
+  $\Ra$を示す．任意の$z \in \clos X$に対して，$z$の$\cl X$-導出が存在することを$\cl X$-帰納法で示す．
+  \begin{step}
+    \item $z \in X_0$の場合，$(z)$は$z$の$\cl X$-導出である．
+    \item $H \in \cl H$と$z_0, \dots, z_{k_H - 1} \in X$を任意に取り，$z_0, \dots, z_{k_H - 1}$の$\cl X$-導出が存在すると仮定する．それらをそれぞれ
+    \begin{eqgather}
+      (x_0^0, \dots, x_0^{n_0}, z_0) \\
+      \vdots \\
+      (x_{k_H - 1}^0, \dots, x_{k_H - 1}^{n_{k_H - 1}}, z_{k_H - 1})
+    \end{eqgather}
+    とすると，これらの連結に$H (z_0, \dots, z_{k_H - 1})$を追加した列
+    \begin{eqalign}
+      ( & x_0^0, \dots, x_0^{n_0}, z_0, \\
+      & & & \dots, \\
+      & & & & & x_{k_H - 1}^0, \dots, x_{k_H - 1}^{n_{k_H - 1}}, z_{k_H - 1}, \\
+      & & & & & & & H (z_0, \dots, z_{k_H - 1}))
+    \end{eqalign}
+    は$H (z_0, \dots, z_{k_H - 1})$の$\cl X$-導出である．なぜなら，この列の$H (z_0, \dots, z_{k_H - 1})$以外の項は，仮定より定義1.2.6(i)または(ii)を満たし，また$H (z_0, \dots, z_{k_H - 1})$は定義1.2.6(ii)を満たすからである．
+  \end{step}
+
+  $\La$を示す．$(x_0, \dots, x_n)$が$x_n$の$\cl X$-導出であれば$x_n \in \clos X$であることを$\cl P (n)$と書き，これを$n$に関する帰納法で示す．
+  \begin{step}
+    \item $n = 0$の場合，$x_0$について定義1.2.6(ii)は成り立たないので，(i) $x_n \in X_0$が成り立つ．よって，$\cl P (n)$である．
+    \item 任意の$0 \le i \le n$に対して$\cl P (i)$を仮定する．$(x_0, \dots, x_{n + 1})$は$x_{n + 1}$の$\cl X$-導出であるとすると，定義1.2.6(i)または(ii)が成り立つ．(i)の場合，$\cl P (n + 1)$である．(ii)の場合，仮定より，$x_{j_0}, \dots, x_{j_{k_H - 1}} \in \clos X$であるから，命題1.2.3(i)より，$x_{n + 1} = H (x_{j_0}, \dots, x_{j_{k_H - 1}}) \in \clos X$である．よって，$\cl P (n + 1)$である．
+  \end{step}
+  以上より，任意の$n \in \omega$に対して$\cl P (n)$である．よって，$(x_0, \dots, x_n)$が$z$の$\cl X$-導出であれば，$z = x_n \in \clos X$である．
+\end{excfield}
