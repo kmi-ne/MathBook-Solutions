@@ -57,9 +57,9 @@
 \NewDocumentEnvironment{thmlist}{O{}}{\ifstrequal{#1}{n}{\begin{thmlistx}[leftmargin=*]}{\begin{thmlistx}}}{\end{thmlistx}}
 
 \newlist{step}{enumerate}{3}
-\setlist[step, 1]{label=(\arabic{stepi}), noitemsep}
-\setlist[step, 2]{label=(\arabic{stepi}.\arabic{stepii}), noitemsep}
-\setlist[step, 3]{label=(\arabic{stepi}.\arabic{stepii}.\arabic{stepiii}), noitemsep}
+\setlist[step, 1]{label=(\arabic{stepi}), ref=(\arabic{stepi}), noitemsep}
+\setlist[step, 2]{label=(\arabic{stepi}.\arabic{stepii}), ref=(\arabic{stepi}.\arabic{stepii}), noitemsep}
+\setlist[step, 3]{label=(\arabic{stepi}.\arabic{stepii}.\arabic{stepiii}), ref=(\arabic{stepi}.\arabic{stepii}.\arabic{stepiii}), noitemsep}
 
 
 \usepackage[nameinlink]{cleveref}
