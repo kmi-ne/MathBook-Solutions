@@ -7,6 +7,7 @@
     \item[$\cl X$-閉である] $\cl X$-closed
     \item[帰納的系] inductive system
     \item[帰納的閉包] inductive closure
+    \item[帰納法の仮定] induction hypothesis
   \end{description}
 \end{myfrm}
 
@@ -53,7 +54,124 @@
 
 
 
-\begin{excfield}{命題1.2.7}
+\begin{excfield}{注意: 定理1.2.5}
+  特に，$X = \clos X$とすれば，$(\clos X, X_0, \cl H)$は帰納的系なので，帰納法の仮定$\cl P (x_0), \dots, \cl P (x_{k_H - 1})$は$x_0, \dots, x_{k_H - 1} \in \rx{\clos X}$のときのみを考えればよいことが分かります．
+\end{excfield}
+
+
+
+\begin{excfield}{定理1.2.12}
+  証明をもう少し詳しく書きます．\\
+  \dotfill
+
+  \begin{step}
+    \item $z_n = z$，かつ任意の$i < n$に対して$z_{i + 1} = G (z_i, i)$であるような$z_1, \dots, z_n$が存在する，ということを$\cl P (z, n)$と書き，また$\cl P (z, n)$なる$z$が一意に存在することを$\cl Q (n)$と書く．任意の$n \ge 1$に対して$\cl Q (n)$を帰納法で示す．
+    \begin{step}
+      \item $z = z_0$であり，また任意の$i < 0$に対して自明に$z_{i + 1} = G (z_i, i)$であるから，$\cl P (z, 0)$である．このような$z$は$z_0$のみであるから，$\cl Q (0)$である．
+      \item $\cl Q (n)$を仮定し，$\cl Q (n + 1)$を示す．仮定より，$\cl P (z, n)$なる$z$が一意に存在するので，それを$\overline{z}$と書く．$\cl P (\overline{z}, n)$であるから，適当な$z_1, \dots, z_n$を取れば
+      \begin{eqalign}
+        z_1 & {}= G (z_0, 0) \\
+        & \vdots \\
+        z_n & {}= G (z_{n - 1}, n - 1) \\
+        \overline{z} & {}= z_n
+      \end{eqalign}
+      である．ここで$z = z_{n + 1} = G (\overline{z}, n)$とすれば$\cl P (z, n + 1)$であり，そのような$z$は$G (\overline{z}, n)$のみであるから，$\cl Q (n + 1)$である．
+    \end{step}
+  \end{step}
+  $\cl P (z, n)$を満たす，この一意に存在する$z$を$z^n$と書く．
+  \begin{step}[resume]
+    \item 関数$F$を$F \colon \omega \ni n \mapsto z^n \in Z$によって定める．
+    \begin{step}
+      \item $F (0) = z^0 = z_0$である．
+      \item $n \in \omega$に対して，$z^n$の定義より，$F (n + 1) = z^{n + 1} = G (z_n, n)$である．
+    \end{step}
+  \end{step}
+\end{excfield}
+
+
+
+\begin{excfield}{演習1.2.18}
+  $\clos X \sbc X$は，$\clos X$の定義から従う．
+
+  以下，
+  \begin{myenum*}
+    \item $X_0 \sbc X$
+    \item 任意の$H \in \cl H$と$x_0, \dots, x_{k_H - 1} \in \clos X$に対して，$H (x_0, \dots, x_{k_H - 1}) \in \clos X$
+  \end{myenum*}
+  を示す．
+  \begin{myenum}
+    \item $Y$が$\clos X$-閉であれば$X_0 \sbc Y$であるから，
+    \[
+      \clos X
+      = \bigcap \{Y \sbc X : \closed{Y}{\cl X}\}
+      \sprc \{Y \sbc X : X_0 \sbc Y\}
+      = X_0
+    \]
+    より，$X_0 \sbc \clos X$を得る．
+    \item $H \in \cl H$，$x_0, \dots, x_{k_H - 1} \in \clos X$とする．$\cl X$-閉である$Y$を任意に取る．
+    \[
+      \clos X
+      = \bigcap \{Y \sbc X : \closed{Y}{\cl X}\}
+      = \bigcap \{Y : \closed{Y}{\cl X}\}
+    \]
+    より，$x_0, \dots, x_{k_H - 1} \in Y$であり，$Y$は$\cl X$-閉であるから，$H (x_0, \dots, x_{k_H - 1}) \in Y$である．よって，
+    \[
+      H (x_0, \dots, x_{k_H - 1})
+      \in \bigcap \{Y \sbc X : \closed{Y}{\cl X}\}
+      = \clos X
+    \]
+    である．
+  \end{myenum}
+\end{excfield}
+
+
+
+\begin{excfield}{演習1.2.19}
+  一意可読性より，任意の$x \in X_{n + 1} \sim X_n$に対して，$x = H (x_0, \dots, x_{k_H - 1})$なる$H \in \cl H$と$x_0, \dots, x_{k_H - 1} \in X_n$がそれぞれ一意に存在する．したがって，任意の$n \in \omega$に対し，関数$F^u_n \colon X_n \to Z$を以下のように再帰的に定義できる．
+  \begin{eqalign}
+    F^u_0 (x) & {}= F_0 (x, u) & & \text{if $x \in X_0$} \\
+    F^u_{n + 1} (x) & {}= F^u_n (x) & & \text{if $x \in X_n$} \\
+    F^u_{n + 1} (H (x_0, \dots, x_{k_H - 1})) & {}= G_H (F^u_n (x_0), \dots, F^u_n (x_{k_H - 1}), x_0, \dots, x_{k_H - 1}, u) & & \text{if $x \in X_{n + 1} \sim X_n$}
+  \end{eqalign}
+  $i_x$を$x \in X_n$なる最小の$n \in \omega$とし，関数$F \colon \clos X \times U \to Z$を$F (x, u) = F^u_{i_x} (x)$によって定義すると，$x \in X_n$なる任意の$n$，つまり$n \ge i_x$に対して，$F (x) = F^u_{i_x} (x) = \dots = F^u_n (x)$である．よって，
+  \begin{step}
+    \item 任意の$x \in X_0$に対して$F (x, u) = F^u_0 (x) = F_0 (x, u)$であるから，$F$は$F_0$の拡張である．
+    \item 任意の$H \in \cl H$，$u \in U$，$x_0, \dots, x_{k_H - 1} \in \clos X$に対して，適当な$n \in \omega$が存在して，
+    \begin{eqalign}
+      F (H (x_0, \dots, x_{k_H - 1}), u)
+      & {}= F^u_{n + 1} (H (x_0, \dots, x_{k_H - 1})) \\
+      & {}= G_H (F^u_n (x_0), \dots, F^u_n (x_{k_H - 1}), x_0, \dots, x_{k_H - 1}, u) \\
+      & {}= G_H (F (x_0, u), \dots, F (x_{k_H - 1}, u), x_0, \dots, x_{k_H - 1}, u)
+    \end{eqalign}
+    である．よって，
+    \[
+      F (H (x_0, \dots, x_{k_H - 1}), u)
+      = G_H (F (x_0, u), \dots, F (x_{k_H - 1}, u), x_0, \dots, x_{k_H - 1}, u)
+    \]
+    である．
+  \end{step}
+
+  $F$の一意性を示す．いま，関数$F' \colon \clos X  \times U \to Z$も$F_0$の拡張であり，かつ
+  \[
+    F' (H (x_0, \dots, x_{k_H - 1}), u)
+    = G_H (F' (x_0, u), \dots, F' (x_{k_H - 1}, u), x_0, \dots, x_{k_H - 1}, u)
+  \]
+  を満たすとする．任意の$x \in \clos X$と$u \in U$に対して$F (x, u) = F' (x, u)$が成り立ち，したがって$F = F'$が成り立つことを，$\clos X$-帰納法で示す．
+  \begin{step}
+    \item $x \in X_0$の場合，$F (x, u) = F^u_0 (x) = F_0 (x, u) = F'^u_0 (x) = F' (x, u)$である．
+    \item $H \in \cl H$，$x_0, \dots, x_{k_H - 1} \in \clos X$を任意に取り，$F (x_i, u) = F' (x_i, u)$を仮定する（$0 \le i \le k_H - 1$）と，
+    \begin{eqalign}
+      F (H (x_0, \dots, x_{k_H - 1}), u)
+      & {}= G_H (F (x_0, u), \dots, F (x_{k_H - 1}, u), x_0, \dots, x_{k_H - 1}, u) \\
+      & {}= G_H (F' (x_0, u), \dots, F' (x_{k_H - 1}, u), x_0, \dots, x_{k_H - 1}, u) \\
+      & {}= F' (H (x_0, \dots, x_{k_H - 1}), u)
+    \end{eqalign}
+  \end{step}
+\end{excfield}
+
+
+
+\begin{excfield}{演習1.2.21}
   $\Ra$を示す．任意の$z \in \clos X$に対して，$z$の$\cl X$-導出が存在することを$\cl X$-帰納法で示す．
   \begin{step}
     \item $z \in X_0$の場合，$(z)$は$z$の$\cl X$-導出である．
@@ -65,7 +183,7 @@
     \end{eqgather}
     とすると，これらの連結に$H (z_0, \dots, z_{k_H - 1})$を追加した列
     \begin{eqalign}
-      ( & x_0^0, \dots, x_0^{n_0}, z_0, \\
+      & (x_0^0, \dots, x_0^{n_0}, z_0, \\
       & & & \dots, \\
       & & & & & x_{k_H - 1}^0, \dots, x_{k_H - 1}^{n_{k_H - 1}}, z_{k_H - 1}, \\
       & & & & & & & H (z_0, \dots, z_{k_H - 1}))
@@ -73,10 +191,10 @@
     は$H (z_0, \dots, z_{k_H - 1})$の$\cl X$-導出である．なぜなら，この列の$H (z_0, \dots, z_{k_H - 1})$以外の項は，仮定より定義1.2.6(i)または(ii)を満たし，また$H (z_0, \dots, z_{k_H - 1})$は定義1.2.6(ii)を満たすからである．
   \end{step}
 
-  $\La$を示す．$(x_0, \dots, x_n)$が$x_n$の$\cl X$-導出であれば$x_n \in \clos X$であることを$\cl P (n)$と書き，これを$n$に関する帰納法で示す．
+  $\La$を示す．$(x_0, \dots, x_n)$が$x_n$の$\cl X$-導出であれば$x_n \in \clos X$である，ということを$\cl P (n)$と書き，これを$n$に関する帰納法で示す．
   \begin{step}
-    \item $n = 0$の場合，$x_0$について定義1.2.6(ii)は成り立たないので，(i) $x_n \in X_0$が成り立つ．よって，$\cl P (n)$である．
-    \item 任意の$0 \le i \le n$に対して$\cl P (i)$を仮定する．$(x_0, \dots, x_{n + 1})$は$x_{n + 1}$の$\cl X$-導出であるとすると，定義1.2.6(i)または(ii)が成り立つ．(i)の場合，$\cl P (n + 1)$である．(ii)の場合，仮定より，$x_{j_0}, \dots, x_{j_{k_H - 1}} \in \clos X$であるから，命題1.2.3(i)より，$x_{n + 1} = H (x_{j_0}, \dots, x_{j_{k_H - 1}}) \in \clos X$である．よって，$\cl P (n + 1)$である．
+    \item $n = 0$の場合，$x_0$について定義1.2.6(ii)は成り立たないので，(i) $x_0 \in X_0$が成り立つ．これと$X_0 \sbc \clos X$より，$\cl P (0)$である．
+    \item 任意の$0 \le i \le n$に対して$\cl P (i)$を仮定する．$(x_0, \dots, x_{n + 1})$が$x_{n + 1}$の$\cl X$-導出であるとすると，定義1.2.6(i)または(ii)が成り立つ．(i)の場合，$X_0 \sbc \clos X$より$\cl P (n + 1)$である．(ii)の場合，仮定より，$x_{j_0}, \dots, x_{j_{k_H - 1}} \in \clos X$であるから，命題1.2.3(i)より，$x_{n + 1} = H (x_{j_0}, \dots, x_{j_{k_H - 1}}) \in \clos X$である．よって，$\cl P (n + 1)$である．
   \end{step}
   以上より，任意の$n \in \omega$に対して$\cl P (n)$である．よって，$(x_0, \dots, x_n)$が$z$の$\cl X$-導出であれば，$z = x_n \in \clos X$である．
 \end{excfield}
