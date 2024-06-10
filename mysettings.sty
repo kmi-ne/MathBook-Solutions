@@ -117,21 +117,23 @@
 \defitem{prp}{命題}
 
 
-\usepackage{longtable}
+\usepackage{xltabular}
+\usepackage{multirow}
 \usepackage{hhline}
+\newcommand{\typoscol}[3]{\multirow{2}{*}{#1} & {#2} \\ \cline{2-2} & {#3}}
 \newenvironment{typos}{%
-  \begin{longtable}[l]{|l|p{.35\linewidth}|p{.35\linewidth}|}
+  \xltabular{\linewidth}{|p{8em}|X|}
     \hline
-    {\gs 修正箇所} & {\gs 誤} & {\gs 正} \\
-    \hhline{|===|}
+    \typoscol{\gs 修正箇所}{\gs 誤}{\gs 正} \\
+    \hhline{|==|}
     \endfirsthead
     \hline
     \endhead
     \hline
     \endfoot
-    \hhline{|===|}
+    \hhline{|==|}
     \endlastfoot%
-}{\end{longtable}}
+}{\endxltabular}
 
 
 \everymath{\displaystyle}
