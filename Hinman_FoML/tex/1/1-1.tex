@@ -3,27 +3,27 @@
 \begin{myfrm}[訳語対応]
   \begin{description}
     \item[一意可読性] unique readability
-    \item[原子命題論理式] atomic sentence
+    \item[原子文] atomic sentence
     \item[真の始切片] proper initial segment
     \item[命題記号] sentence symbol
-    \item[命題論理式] sentence
-    \item[命題論理式の帰納法] sentence induction
+    \item[文] sentence
+    \item[文の帰納法] sentence induction
   \end{description}
 \end{myfrm}
 
 
 
 \begin{excfield}{注意: 命題1.1.5の補題(4)の証明}
-  補題(4)の証明は，$\phi_0 \dots \phi_k$の長さに関する帰納法に基づいていますが，帰納法のbasisである，長さが$1$の場合に(4)が正しいことの証明が省略されています．これは次のように証明できます．$\phi_0 \dots \phi_k$と$\psi_0 \dots \psi_l$の長さに関して$1 > k, l$であるため，$k = l = 0$でしかありえず，したがって$\phi_0 = \psi_0$となります．
+  補題(4)の証明は，$\phi_0 \dots \phi_k$の長さに関する帰納法に基づいていますが，帰納法の基底である，長さが$1$の場合に(4)が正しいことの証明が省略されています．これは次のように証明できます．$\phi_0 \dots \phi_k$と$\psi_0 \dots \psi_l$の長さに関して$1 > k, l$であるため，$k = l = 0$でしかありえず，したがって$\phi_0 = \psi_0$となります．
 \end{excfield}
 
 
 
 \begin{excfield}{演習1.1.10}
   以下のように定義する．
-  \begin{dfn}[中置記法での$L$--命題論理式の集合]
+  \begin{dfn}[中置記法での$L$--文の集合]
     \begin{thmlist}[n]
-      \item $\Sent_0 \dfeq \text{$L$--原子命題論理式の集合}$
+      \item $\Sent_0 \dfeq \text{$L$--原子文の集合}$
       \item 任意の$n \in \omega$に対して，
       \begin{eqalign}
         \Sent_{n + 1} \dfeq{} & \Sent_n \cup \{(\lnot \phi) : \phi \in \Sent_n\} \\
@@ -34,31 +34,31 @@
   \end{dfn}
 
   次は補題1.1.3および命題1.1.4と全く同じ方法で証明できる．
-  \begin{prp}[$L$--命題論理式の帰納法による証明][i_1_10_ind][$L$--命題論理式の帰納法]
+  \begin{prp}[$L$--文の帰納法による証明][i_1_10_ind][$L$--文の帰納法]
     $L$--表現に関する任意の性質$\cl P$に対して，
     \begin{myenum}
-      \item 任意の$L$--原子命題論理式について$\cl P$が成り立ち，かつ
-      \item 任意の$L$--命題論理式$\phi, \psi$に対し，$\phi, \psi$について$\cl P$が成り立つならば，$(\lnot \phi)$，$(\phi \lor \psi)$，$(\phi \land \psi)$，$(\phi \ra \psi)$，$(\phi \lra \psi)$についても$\cl P$が成り立つ
+      \item 任意の$L$--原子文について$\cl P$が成り立ち，かつ
+      \item 任意の$L$--文$\phi, \psi$に対し，$\phi, \psi$について$\cl P$が成り立つならば，$(\lnot \phi)$，$(\phi \lor \psi)$，$(\phi \land \psi)$，$(\phi \ra \psi)$，$(\phi \lra \psi)$についても$\cl P$が成り立つ
     \end{myenum}
-    ならば，任意の$L$--命題論理式に対して$\cl P$が成り立つ．
+    ならば，任意の$L$--文に対して$\cl P$が成り立つ．
   \end{prp}
 
   次を証明する．
   \begin{prp}[一意可読性][i_1_10_ur]
-    任意の$L$--命題論理式$\theta$に対して，以下のちょうど1つが成り立つ．
+    任意の$L$--文$\theta$に対して，以下のちょうど1つが成り立つ．
     \begin{myenum}
       \item \label{i_1_10_ur_1}
-      $\theta$は$L$--原子命題論理式である．
+      $\theta$は$L$--原子文である．
       \item \label{i_1_10_ur_2}
-      $\theta = (\lnot \phi)$なる$L$--命題論理式$\phi$が存在する．
+      $\theta = (\lnot \phi)$なる$L$--文$\phi$が存在する．
       \item \label{i_1_10_ur_3}
-      $\theta = (\phi \lor \psi)$なる$L$--命題論理式$\phi, \psi$がそれぞれ一意に存在する．
+      $\theta = (\phi \lor \psi)$なる$L$--文$\phi, \psi$がそれぞれ一意に存在する．
       \item \label{i_1_10_ur_4}
-      $\theta = (\phi \land \psi)$なる$L$--命題論理式$\phi, \psi$がそれぞれ一意に存在する．
+      $\theta = (\phi \land \psi)$なる$L$--文$\phi, \psi$がそれぞれ一意に存在する．
       \item \label{i_1_10_ur_5}
-      $\theta = (\phi \ra \psi)$なる$L$--命題論理式$\phi, \psi$がそれぞれ一意に存在する．
+      $\theta = (\phi \ra \psi)$なる$L$--文$\phi, \psi$がそれぞれ一意に存在する．
       \item \label{i_1_10_ur_6}
-      $\theta = (\phi \lra \psi)$なる$L$--命題論理式$\phi, \psi$がそれぞれ一意に存在する．
+      $\theta = (\phi \lra \psi)$なる$L$--文$\phi, \psi$がそれぞれ一意に存在する．
     \end{myenum}
   \end{prp}
 
@@ -66,27 +66,27 @@
   \begin{lem}
     \begin{thmlist}[n]
       \item \label{i_1_10_lem_preq}
-      $L$--命題論理式に含まれる$($の個数と$)$の個数は同じである．
+      $L$--文に含まれる$($の個数と$)$の個数は同じである．
       \item \label{i_1_10_lem_prg}
-      $L$--命題論理式の真の始切片\footnote{演習1.1.11参照．}に含まれる$($の個数は$)$の個数より多い．
+      $L$--文の真の始切片\footnote{演習1.1.11参照．}に含まれる$($の個数は$)$の個数より多い．
       \item \label{i_1_10_lem_iniseg}
-      $L$--命題論理式の真の始切片は$L$--命題論理式ではない．
+      $L$--文の真の始切片は$L$--文ではない．
       \item \label{i_1_10_lem_conn}
-      $\bullet'$は$\lor, \land , \ra, \lra$のいずれかとし，$\phi, \psi, \phi', \psi'$は$L$--命題論理式とする．$(\phi \bullet \psi) = (\phi' \mathbin{\bullet'} \psi')$ならば，$\phi = \phi'$，$\bullet = \bullet'$，$\psi = \psi'$である．
+      $\bullet'$は$\lor, \land , \ra, \lra$のいずれかとし，$\phi, \psi, \phi', \psi'$は$L$--文とする．$(\phi \bullet \psi) = (\phi' \mathbin{\bullet'} \psi')$ならば，$\phi = \phi'$，$\bullet = \bullet'$，$\psi = \psi'$である．
     \end{thmlist}
 
     \tcblower
 
     \begin{myenum}[n]
-      \item $\phi$に対してこれが成り立つことを$\cl P (\phi)$と書く．任意の$L$--命題論理式$\phi$に対して$\cl P (\phi)$を\nameref{i_1_10_ind}で示す．
+      \item $\phi$に対してこれが成り立つことを$\cl P (\phi)$と書く．任意の$L$--文$\phi$に対して$\cl P (\phi)$を\nameref{i_1_10_ind}で示す．
       \begin{step}
-        \item $\phi$が$L$--原始命題論理式の場合，$($と$)$は含まれないので，$\cl P (\phi)$である．
-        \item $L$--命題論理式$\phi, \psi$を任意に取り，$\cl P (\phi)$と$\cl P (\psi)$を仮定する．仮定より，$\cl P ((\lnot \phi))$，$\cl P (\phi \bullet \psi)$であることは明らかである．
+        \item $\phi$が$L$--原始文の場合，$($と$)$は含まれないので，$\cl P (\phi)$である．
+        \item $L$--文$\phi, \psi$を任意に取り，$\cl P (\phi)$と$\cl P (\psi)$を仮定する．仮定より，$\cl P ((\lnot \phi))$，$\cl P (\phi \bullet \psi)$であることは明らかである．
       \end{step}
-      \item $\phi$に対してこれが成り立つことを$\cl P (\phi)$と書く．任意の$L$--命題論理式$\phi$に対して$\cl P (\phi)$を\nameref{i_1_10_ind}で示す．
+      \item $\phi$に対してこれが成り立つことを$\cl P (\phi)$と書く．任意の$L$--文$\phi$に対して$\cl P (\phi)$を\nameref{i_1_10_ind}で示す．
       \begin{step}
-        \item $\phi$が$L$--原始命題論理式の場合，真の始切片が存在しないので，$\cl P (\phi)$である．
-        \item $L$--命題論理式$\phi, \psi$を任意に取り，$\cl P (\phi)$と$\cl P (\psi)$を仮定する．$(\lnot \phi)$，$(\phi \bullet \psi)$のいずれについても，その真の始切片は右端の$\noprint{(})$を持たず，従って(i)より，そこに含まれる$($の個数は$)$の個数より多い．つまり，$\cl P ((\lnot \phi))$，$\cl P ((\phi \bullet \psi))$である．
+        \item $\phi$が$L$--原始文の場合，真の始切片が存在しないので，$\cl P (\phi)$である．
+        \item $L$--文$\phi, \psi$を任意に取り，$\cl P (\phi)$と$\cl P (\psi)$を仮定する．$(\lnot \phi)$，$(\phi \bullet \psi)$のいずれについても，その真の始切片は右端の$\noprint{(})$を持たず，従って(i)より，そこに含まれる$($の個数は$)$の個数より多い．つまり，$\cl P ((\lnot \phi))$，$\cl P ((\phi \bullet \psi))$である．
       \end{step}
       \item \itemref{i_1_10_lem_preq}と\itemref{i_1_10_lem_prg}から従う．
       \item $(\phi \bullet \psi) = (\phi' \mathbin{\bullet'} \psi')$であれば，$\noprint{(}\phi \bullet \psi) = \noprint{(}\phi' \mathbin{\bullet'} \psi')$であり，\itemref{i_1_10_lem_iniseg}より，$\phi$と$\phi'$の一方は他方の真の始切片になりえないので，$\phi = \phi'$である．よって，$\bullet = \bullet'$，次いで$\psi = \psi'$が従う．
@@ -95,17 +95,17 @@
 
   \cref{i_1_10_ur}を証明する．
 
-  (i)--(vi)のちょうど1つが$\theta$について成り立つことを$\cl P (\theta)$と書く．任意の$L$--命題論理式$\theta$に対して$\cl P (\theta)$を\nameref{i_1_10_ind}で示す．
+  (i)--(vi)のちょうど1つが$\theta$について成り立つことを$\cl P (\theta)$と書く．任意の$L$--文$\theta$に対して$\cl P (\theta)$を\nameref{i_1_10_ind}で示す．
   \begin{step}
     \item \label{i_1_10_prf_atm}
-    $\theta$が$L$--原始命題論理式の場合，(i)のみが成り立つので，$\cl P (\theta)$である．
+    $\theta$が$L$--原始文の場合，(i)のみが成り立つので，$\cl P (\theta)$である．
   \end{step}
-  $L$--命題論理式$\theta, \theta'$を任意に取り，$\cl P (\theta)$と$\cl P (\theta')$を仮定する．
+  $L$--文$\theta, \theta'$を任意に取り，$\cl P (\theta)$と$\cl P (\theta')$を仮定する．
   \begin{step}[resume]
     \item \label{i_1_10_prf_lnot}
-    $(\lnot \theta) = (\lnot \phi)$なる$L$--命題論理式$\phi$は一意に存在するので，(ii)が成り立ち，また左端から2番目の記号が$\lnot$であるのは(ii)の場合だけである．よって$\cl P ((\lnot \theta))$である．
+    $(\lnot \theta) = (\lnot \phi)$なる$L$--文$\phi$は一意に存在するので，(ii)が成り立ち，また左端から2番目の記号が$\lnot$であるのは(ii)の場合だけである．よって$\cl P ((\lnot \theta))$である．
     \item \label{i_1_10_prf_lor}
-    $(\theta \lor \theta') = (\phi \lor \psi)$なる$L$--命題論理式$\phi, \psi$の存在は明らかである（$\theta, \theta'$自身）．また，$(\theta \lor \theta')$について，\ref{i_1_10_prf_atm}，\ref{i_1_10_prf_lnot}と同様の理由で，(i)と(ii)は成り立たない．また\cref{i_1_10_lem_conn}より，(iii)--(vi)のうち(iii)のみが成り立つ．よって$\cl P ((\theta \lor \theta'))$である．
+    $(\theta \lor \theta') = (\phi \lor \psi)$なる$L$--文$\phi, \psi$の存在は明らかである（$\theta, \theta'$自身）．また，$(\theta \lor \theta')$について，\ref{i_1_10_prf_atm}，\ref{i_1_10_prf_lnot}と同様の理由で，(i)と(ii)は成り立たない．また\cref{i_1_10_lem_conn}より，(iii)--(vi)のうち(iii)のみが成り立つ．よって$\cl P ((\theta \lor \theta'))$である．
     \item \ref{i_1_10_prf_lor}と同様に，$\cl P ((\theta \land \theta'))$，$\cl P ((\theta \ra \theta'))$，$\cl P ((\theta \lra \theta'))$である．
   \end{step}
 \end{excfield}
@@ -113,21 +113,21 @@
 
 
 \begin{excfield}{演習1.1.11}
-  長さ$n$の任意の$L$--命題論理式$\phi$に対し，その真の始切片が$L$--命題論理式でないことを$\cl P (n)$と書く．任意の$n$に対して$\cl P (n)$を帰納法で示す．
+  $n \in \omega$に対し，長さ$n$の任意の$L$--文$\phi$の真の始切片は$L$--文ではない，ということを$\cl P (n)$と書く．任意の$n$に対して$\cl P (n)$を帰納法で示す．
   \begin{step}
     \item $n = 1$の場合，真の始切片が存在しないので，$\cl P (1)$である．
   \end{step}
-  任意の$1 \le i \le n$に対して$\cl P (i)$を仮定し，長さ$n + 1$の$L$--命題論理式$\phi$を任意に取る（もしそのような$\phi$が存在しなければ，自明に$\cl P (n + 1)$である）．命題1.1.5の証明の(1)と(2)より，$\phi$について(i)--(vi)のちょうど1つが成り立つ．
+  任意の$1 \le i \le n$に対して$\cl P (i)$を仮定し，長さ$n + 1$の$L$--文$\phi$を任意に取る（もしそのような$\phi$が存在しなければ，自明に$\cl P (n + 1)$である）．命題1.1.5の証明の(1)と(2)より，$\phi$について(i)--(vi)のちょうど1つが成り立つ．
   \begin{step}[resume]
-    \item $\phi$が$L$--原始命題論理式の場合，真の始切片が存在しないので，$\cl P (n + 1)$である．
-    \item $\phi = \lnot \psi$の場合，その真の始切片は$\lnot$か$\lnot S$の形である（$S$は$\psi$の真の始切片）．前者は$L$--命題論理式ではない．後者は，帰納法の仮定より$S$は$L$--命題論理式ではないので，命題1.1.5(ii)が成り立たず，また左端の記号が異なるので，(ii)以外も成り立たない．よって，$\phi$の真の始切片は$L$--命題論理式ではないので，$\cl P (n + 1)$である．
+    \item $\phi$が$L$--原始文の場合，真の始切片が存在しないので，$\cl P (n + 1)$である．
+    \item $\phi = \lnot \psi$の場合，その真の始切片は$\lnot$か$\lnot S$の形である（$S$は$\psi$の真の始切片）．前者は$L$--文ではない．後者は，帰納法の仮定より$S$は$L$--文ではないので，命題1.1.5(ii)が成り立たず，また左端の記号が異なるので，(ii)以外も成り立たない．よって，$\phi$の真の始切片は$L$--文ではないので，$\cl P (n + 1)$である．
     \item \label{i_1_11_lor}
-    $\phi = \lorord \psi \psi'$の場合，その真の始切片は以下のいずれかの形であり，仮にそれが$L$--命題論理式であれば，命題1.1.5(iii)が成り立つはずである．
+    $\phi = \lorord \psi \psi'$の場合，その真の始切片は以下のいずれかの形であり，仮にそれが$L$--文であれば，命題1.1.5(iii)が成り立つはずである．
     \begin{step}
-      \item $\lor$．これは$L$--命題論理式ではない．
-      \item $\lorord S$（$S$は$\psi$の真の始切片）．帰納法の仮定より，$S$は$L$--命題論理式ではないので，命題1.1.5(iii)は成り立たない．よって，これは$L$--命題論理式ではない．
-      \item $\lorord \psi$．帰納法の仮定より，$\psi$の真の始切片$\chi$は$L$--命題論理式ではない．したがって，$\lorord \psi = \lorord \chi \chi'$なる$L$--命題論理式$\chi, \chi'$は存在しないので，命題1.1.5(iii)は成り立たない．よって，これは$L$--命題論理式ではない．
-      \item $\lorord \psi S$（$S$は$\psi'$の真の始切片）．$L$--命題論理式$\chi$の長さが$n$未満であれば，帰納法の仮定より，$\psi$と$\chi$の一方が他方の真の始切片になることはない．したがって，$\lorord \psi S = \lorord \chi \chi'$なる$L$--命題論理式$\chi, \chi'$は存在しないので，命題1.1.5(iii)は成り立たない．よって，これは$L$--命題論理式ではない．
+      \item $\lor$．これは$L$--文ではない．
+      \item $\lorord S$（$S$は$\psi$の真の始切片）．帰納法の仮定より，$S$は$L$--文ではないので，命題1.1.5(iii)は成り立たない．よって，これは$L$--文ではない．
+      \item $\lorord \psi$．帰納法の仮定より，$\psi$の真の始切片$\chi$は$L$--文ではない．したがって，$\lorord \psi = \lorord \chi \chi'$なる$L$--文$\chi, \chi'$は存在しないので，命題1.1.5(iii)は成り立たない．よって，これは$L$--文ではない．
+      \item $\lorord \psi S$（$S$は$\psi'$の真の始切片）．$L$--文$\chi$の長さが$n$未満であれば，帰納法の仮定より，$\psi$と$\chi$の一方が他方の真の始切片になることはない．したがって，$\lorord \psi S = \lorord \chi \chi'$なる$L$--文$\chi, \chi'$は存在しないので，命題1.1.5(iii)は成り立たない．よって，これは$L$--文ではない．
     \end{step}
     以上より，$\cl P (n + 1)$である．
     \item $\phi = \bulletord \psi \psi'$（$\bullet = \landord, \raord, \lraord$）の場合も，\ref{i_1_11_lor}と同様にして$\cl P (n + 1)$を証明できる．
@@ -151,13 +151,13 @@
 
   したがって，任意の$n \in \omega$に対し，関数$F_{n + 1} \colon \Sent_n \to Z$を以下のように再帰的に定義できる．
   \begin{eqalign}
-    F_{n + 1} (\phi) & {}= F_n (\phi)  & & \text{if $\phi \in \Sent_n$} \\
+    F_{n + 1} (\phi) & {}= F_n (\phi) & & \text{if $\phi \in \Sent_n$} \\
     F_{n + 1} (\lnot \phi) & {}= G_\lnot (F_n (\phi)) & & \text{if $\lnot \phi \in \Sent_{n + 1} \sim \Sent_n$} \\
     F_{n + 1} (\bulletord \phi \psi) & {}= G_\bullet (F_n (\phi), F_n(\psi)) & & \text{if $\bulletord \phi \psi \in \Sent_{n + 1} \sim \Sent_n$}
   \end{eqalign}
-  $i_\phi$を$\phi \in \Sent_n$なる最小の$n \in \omega$とし，関数$F \colon \Sent_L \to Z$を$F (\phi) = F_{i_\phi} (\phi)$によって定義すると，任意の$\phi \in \Sent_n$なる$n$，つまり$n \ge i_\phi$に対して，$F (\phi) = F_{i_\phi} (\phi) = F_{i_\phi + 1} (\phi) = \dots = F_n (\phi)$である．よって，
+  $i_\phi$を$\phi \in \Sent_n$なる最小の$n \in \omega$とし，関数$F \colon \Sent_L \to Z$を$F (\phi) = F_{i_\phi} (\phi)$によって定義すると，$\phi \in \Sent_n$なる任意の$n$，つまり$n \ge i_\phi$に対して，$F (\phi) = F_{i_\phi} (\phi) = F_{i_\phi + 1} (\phi) = \dots = F_n (\phi)$である．よって，
   \begin{step}
-    \item $\phi \in \Sent_0$に対して$F (\phi) = F_0 (\phi)$であるから，$F$は$F_0$の拡張である．
+    \item 任意の$\phi \in \Sent_0$に対して$F (\phi) = F_0 (\phi)$であるから，$F$は$F_0$の拡張である．
     \item 任意の$\phi \in \Sent_L$に対して，適当な$n \in \omega$が存在して，
     \begin{eqgather}
       F (\lnot \phi) = F_{n + 1} (\lnot \phi) = G_\lnot (F_n (\phi)) = G_\lnot (F (\phi)) \\
@@ -176,7 +176,7 @@
     F' (\lnot \phi) & {}= G_\lnot (F' (\phi)) \\
     F' (\bulletord \phi \psi) & {}= G_\bullet (F' (\phi), F' (\psi))
   \end{eqalign}
-  を満たすとする．任意の$\phi \in \Sent_L$に対して$F (\phi) = F' (\phi)$が成り立ち，したがって$F = F'$が成り立つことを，$L$--命題論理式の帰納法で示す．
+  を満たすとする．任意の$\phi \in \Sent_L$に対して$F (\phi) = F' (\phi)$が成り立ち，したがって$F = F'$が成り立つことを，$L$--文の帰納法で示す．
   \begin{step}
     \item $\phi \in \Sent_0$の場合，$F (\phi) = F_0 (\phi) = F' (\phi)$である．
   \end{step}
@@ -233,7 +233,7 @@
 \begin{excfield}{演習1.1.13}
   \begin{myenum}[n]
     \item $\lnot ((\lnot p_1) \lor p_2)$
-    \item 仮にこれが$L$--命題論理式であるとする．命題1.1.5より，$\landord p_1 p_2 \lnot p_3 = \landord \phi \psi$なる$L$--命題論理式$\phi, \psi$が一意に存在する．よって，$p_1$は$L$--命題論理式であるから，$p_2 \lnot p_3$は$L$--命題論理式である．しかし，$p_2 \lnot p_3$は命題1.1.5のいずれの場合も満たさないので，$L$--命題論理式ではない．矛盾．ゆえに$\landord p_1 p_2 \lnot p_3$は$L$--命題論理式ではない．
+    \item 仮にこれが$L$--文であるとする．命題1.1.5より，$\landord p_1 p_2 \lnot p_3 = \landord \phi \psi$なる$L$--文$\phi, \psi$が一意に存在する．よって，$p_1$は$L$--文であるから，$p_2 \lnot p_3$は$L$--文である．しかし，$p_2 \lnot p_3$は命題1.1.5のいずれの場合も満たさないので，$L$--文ではない．矛盾．ゆえに$\landord p_1 p_2 \lnot p_3$は$L$--文ではない．
     \item $(p_1 \land p_2) \ra (((\lnot p_3) \lor p_8) \lra p_3)$
   \end{myenum}
 \end{excfield}
